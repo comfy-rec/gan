@@ -1,5 +1,13 @@
 # gan(generative adversarial network)
 
+vanilla gan, dcgan, wgan, cgan, celeba cgan, unet, pix2pix, cyclegan
+
+## requirements
+
+google colab
+pytorch
+torchvision
+
 ## vanilla gan
 
 ### fundamentals
@@ -71,17 +79,29 @@ adam
 
 train purpose
 P_data (= x) = P_z (= G(z))
-min max V(G, D)
 
-gan train process
+
+train difficulty
+min max V(G, D)
+gradient descent application difficulty
+heuristic train strategy
+
+train process
 before training
 G is not trained -> G(z) & x do not match
 D is not trained -> D is unstable
-D is trained, stable
+
+D is trained
+G is not trained -> G(z) & x do not match
+D is trained -> D is stable
+
 G is training
-G & D is trained
+G is training -> G(z) approaches x
+D is trained -> D is stable
 
-
+G & D are trained
+G is trained -> G(z) & x match
+D is trained -> D is uniform (1/2)
 
 
 dcgan
