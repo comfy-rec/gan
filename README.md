@@ -79,19 +79,19 @@ gradient descent application difficulty
 heuristic train strategy
 
 #### train process
-**before training**
+#### before training
 G is not trained -> G(z) & x do not match  
 D is not trained -> D is unstable
 
-**D is trained**
+#### D is trained
 G is not trained -> G(z) & x do not match  
 D is trained -> D is stable
 
-**G is training**
+**G is training**  
 G is training -> G(z) approaches x  
 D is trained -> D is stable
 
-**G & D are trained**
+**G & D are trained**  
 G is trained -> G(z) & x match  
 D is trained -> D is uniform (1/2)
 
