@@ -150,7 +150,7 @@ wasserstein distance(earth mover's distance)
 discriminator -> critic
 
 loss function  
-min max (E[C(x)] - E[C(G(z))])  
+min max E[C(x)] - E[C(G(z))]  
  G   C  
 real data distribution : E[C(x)]  
 fake data distribution : E[C(G(z))]
