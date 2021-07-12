@@ -1,5 +1,5 @@
 # gan(generative adversarial network)
-gan, dcgan, wgan, cgan, celeba cgan, unet, pix2pix, cyclegan
+gan, dcgan, wgan, cgan, celeba_cgan, unet, pix2pix, cyclegan
 
 ## requirements
 google colab  
@@ -43,8 +43,7 @@ input : latent vector z_k
 output : various sample creation G(z_k)
 
 ### dataset
-mnist(28x28 image)  
-10 classes
+mnist(28x28 images), 10 classes
 
 ### component
 #### generator(G = θ_g)
@@ -75,6 +74,7 @@ P_data (= x) = P_z (= G(z))
 
 ### train difficulty
 min max V(G, D)  
+ G   D  
 gradient descent application difficulty  
 heuristic train strategy
 
@@ -110,8 +110,7 @@ a strong candidate for unsupervised learning
 walk in the latent space
 
 ### dataset
-mnist(28x28 image)  
-10 classes
+mnist(28x28 images), 10 classes
 
 ### component
 #### generator
@@ -124,9 +123,6 @@ discriminator block(convolution, batch norm, leakyrelu)
 BCE(binary cross entropy)  
 generator loss  
 discriminator loss
-
-#### optimizer
-adam
 
 ## wgan(wasserstein gan)
 ### problem of vanilla gan
@@ -168,8 +164,7 @@ regularization
 interpolation G(z), x -> creation x^ -> G(z) quality improvement -> critic train speed control
 
 ### dataset
-mnist(28x28 image)  
-10 classes
+mnist(28x28 images), 10 classes
 
 ### component
 #### generator
@@ -184,23 +179,61 @@ critic block(convolution, batch norm, leakyrelu)
 generator loss  
 critic loss
 
-#### optimizer
-adam
+## cgan(conditional gan)
+control the results of gan by assigning conditions
 
-## cgan
 ### problem of vanilla gan
-uncoltrollable result
+uncontrollable result  
 use cgan
 
-### fundamentals
+### concept
+input : latent vector(z)(= noise vector) + condition vector(y)(= one-hot vector)  
+discriminator : D(x|y)  
+generator : G(z|y)
 
-## celeba cgan
-## unet
+### dataset
+mnist(28x28 images), 10 classes
+
+### component
+#### generator
+generator block(transposed convolution, batch norm, relu, tanh)
+
+#### discriminator
+discriminator block(convolution, batch norm, leakyrelu)
+
+#### input
+latent vector, one-hot vector concatenation
+
+#### loss
+min max V(D, G)  
+ G   D  
+D(x|y), G(z|y)
+
+## celeba_cgan
+21st label name : male  
+1 -> male  
+0 -> female  
+21st label one-hot vector
+
+### dataset
+celeba(64x64x3 images), 40 labels
+
 ## pix2pix
+### concept
+photorealistic, stylistic
+labels to street scene
+labels to facade
+black & white to color
+aerial to map
+day to night
+edges to photo
+
+
+## unet
+
+
 ## cyclegan
 
 
-
-celeba
-
-
+## gaugan
+nvidia ai image creator
