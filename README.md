@@ -70,15 +70,15 @@ discriminator loss
 #### optimizer
 adam
 
-#### train purpose
+### train purpose
 P_data (= x) = P_z (= G(z))
 
-#### train difficulty
+### train difficulty
 min max V(G, D)  
 gradient descent application difficulty  
 heuristic train strategy
 
-#### train process
+### train process
 #### before training
 G is not trained -> G(z) & x do not match  
 D is not trained -> D is unstable
@@ -87,30 +87,29 @@ D is not trained -> D is unstable
 G is not trained -> G(z) & x do not match  
 D is trained -> D is stable
 
-**G is training**  
+#### G is training
 G is training -> G(z) approaches x  
 D is trained -> D is stable
 
-**G & D are trained**  
+#### G & D are trained
 G is trained -> G(z) & x match  
 D is trained -> D is uniform (1/2)
 
 ## dcgan(deep convolutional gan)
-
 ### problem of vanilla gan
-
-generates images, but not visually pleasing results  
+generates images, but not visually pleasing results
 
 ### fundamentals
-
 convolution  
 transposed convolution
 
 ### conept
-
 generate images of much improved quality  
 a strong candidate for unsupervised learning  
-walk in the latent space  
+walk in the latent space
+
+
+
 
 
 wgan
