@@ -30,78 +30,89 @@ AE(auto encoder) -> VAE(variational auto encoder)
 
 나는 강해진다, 나의 적이 강한 만큼
 
-generator
-G : p_z(z) -> p_g
-trying to produce fake currency
+generator  
+G : p_z(z) -> p_g  
+trying to produce fake currency  
 
-discriminator
-D : D(x;θ_d) -> fake/real
-x ~ p_g -> fake, x ~ data -> real
-trying to detect the counterfeit currency
+discriminator  
+D : D(x;θ_d) -> fake/real  
+x ~ p_g -> fake, x ~ data -> real  
+trying to detect the counterfeit currency  
 
-train
+train  
 opposition, competition of generator, discriminator
 
-test
-trained, saved parameter θ_g
-saved generator G(θ_g)
-input : latent vector z_k
+test  
+trained, saved parameter θ_g  
+saved generator G(θ_g)  
+input : latent vector z_k  
 output : various sample creation G(z_k)
 
 ### component
 
 #### dataset
-mnist(28x28 image)
-10 classes
+
+mnist(28x28 image)  
+10 classes  
 
 #### generator(G = θ_g)
-decoder
-latent vector(z, p_z) -> synthesized image(G(z), G(z;θ_g), p_g)
-unused convolution in vanila gan
-generator block(linear, batch norm, relu), fully connected, sigmoid
-input dimension : 10
-output dimension : 784
+
+decoder  
+latent vector(z, p_z) -> synthesized image(G(z), G(z;θ_g), p_g)  
+unused convolution in vanila gan  
+generator block(linear, batch norm, relu), fully connected, sigmoid  
+input dimension : 10  
+output dimension : 784  
 
 #### discriminator(D = θ_d)
-classifier
-real data(x), fake data(G(z)) -> real/fake
-discriminator block(linear, relu), fully connected
-input dimension : 784
-output dimension : 1
+
+classifier  
+real data(x), fake data(G(z)) -> real/fake  
+discriminator block(linear, relu), fully connected  
+input dimension : 784  
+output dimension : 1  
 
 #### loss
-BCE binary cross entropy
-generator loss
-discriminator loss
 
-optimizer
-adam
+BCE(binary cross entropy)  
+generator loss  
+discriminator loss  
 
-train purpose
-P_data (= x) = P_z (= G(z))
+#### optimizer
 
+adam  
 
-train difficulty
-min max V(G, D)
-gradient descent application difficulty
-heuristic train strategy
+#### train purpose
 
-train process
-before training
-G is not trained -> G(z) & x do not match
-D is not trained -> D is unstable
+P_data (= x) = P_z (= G(z))  
 
-D is trained
-G is not trained -> G(z) & x do not match
-D is trained -> D is stable
+#### train difficulty
 
-G is training
-G is training -> G(z) approaches x
-D is trained -> D is stable
+min max V(G, D)  
+gradient descent application difficulty  
+heuristic train strategy  
 
-G & D are trained
-G is trained -> G(z) & x match
-D is trained -> D is uniform (1/2)
+#### train process
+
+##### before training  
+
+G is not trained -> G(z) & x do not match  
+D is not trained -> D is unstable  
+
+##### D is trained  
+
+G is not trained -> G(z) & x do not match  
+D is trained -> D is stable  
+
+##### G is training  
+
+G is training -> G(z) approaches x  
+D is trained -> D is stable  
+
+##### G & D are trained  
+
+G is trained -> G(z) & x match  
+D is trained -> D is uniform (1/2)  
 
 
 dcgan
