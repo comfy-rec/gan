@@ -141,22 +141,31 @@ improves the stability of gan training
 resolve mode collapsing  
 avoid gradient vanishing
 
-problem of cross entropy distribution distance measurement
-gradient vanishing
+#### problem1
+gradient vanishing  
+because of cross entropy distribution distance
 
-solution
-wasserstein distance(earth mover's distance)
-
+#### solution1
+wasserstein distance(earth mover's distance)  
 discriminator -> critic
 
-loss function
-real data distribution E[C(x)]
-fake data distribution E[C(G(z))]
+loss function  
+min max (E[C(x)] - E[C(G(z))])  
+ G   C  
+real data distribution : E[C(x)]  
+fake data distribution : E[C(G(z))]
 
+#### problem2
 gradient exploding
 
-1-lipschitz continuity
-lipschitz function k = 1
+#### solution2
+gradient penalty
+
+lipschitz function : |dy/dx| <= K  
+1-lipschitz continuity : (k = 1) |dy/dx| <= 1  
+weight clipping  
+regularization  
+interpolation G(z), x -> creation x^ -> G(z) quality improvement -> critic train speed control
 
 ### dataset
 mnist(28x28 image)  
@@ -172,9 +181,8 @@ critic block(convolution, batch norm, leakyrelu)
 #### gradient penalty
 
 #### loss
-BCE(binary cross entropy)  
 generator loss  
-discriminator loss
+critic loss
 
 #### optimizer
 adam
