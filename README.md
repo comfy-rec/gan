@@ -97,13 +97,14 @@ D is trained -> D is uniform (1/2)
 
 ## dcgan(deep convolutional gan)
 ### problem of vanilla gan
-generates images, but not visually pleasing results
+generates images, but not visually pleasing results  
+use dcgan
 
 ### fundamentals
 convolution  
 transposed convolution
 
-### conept
+### concept
 generate images of much improved quality  
 a strong candidate for unsupervised learning  
 walk in the latent space
@@ -127,20 +128,68 @@ discriminator loss
 #### optimizer
 adam
 
-## wgan
-
-unstable training
+## wgan(wasserstein gan)
+### problem of vanilla gan
+unstable training  
 use wgan with gradient penalty
 
-cgan
+### fundamentals
+entropy, information theory, cross entropy
 
+### concept
+improves the stability of gan training  
+resolve mode collapsing  
+avoid gradient vanishing
+
+problem of cross entropy distribution distance measurement
+gradient vanishing
+
+solution
+wasserstein distance(earth mover's distance)
+
+discriminator -> critic
+
+loss function
+real data distribution E[C(x)]
+fake data distribution E[C(G(z))]
+
+gradient exploding
+
+1-lipschitz continuity
+lipschitz function k = 1
+
+### dataset
+mnist(28x28 image)  
+10 classes
+
+### component
+#### generator
+generator block(transposed convolution, batch norm, relu, tanh)
+
+#### critic
+critic block(convolution, batch norm, leakyrelu)
+
+#### gradient penalty
+
+#### loss
+BCE(binary cross entropy)  
+generator loss  
+discriminator loss
+
+#### optimizer
+adam
+
+## cgan
+### problem of vanilla gan
 uncoltrollable result
 use cgan
 
-celeba cgan
-unet
-pix2pix
-cyclegan
+### fundamentals
+
+## celeba cgan
+## unet
+## pix2pix
+## cyclegan
 
 
 
