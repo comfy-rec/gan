@@ -42,11 +42,11 @@ saved generator G(θ_g)
 input : latent vector z_k  
 output : various sample creation G(z_k)
 
-### component
-#### dataset
+### dataset
 mnist(28x28 image)  
 10 classes
 
+### component
 #### generator(G = θ_g)
 decoder  
 latent vector(z, p_z) -> synthesized image(G(z), G(z;θ_g), p_g)  
@@ -108,11 +108,26 @@ generate images of much improved quality
 a strong candidate for unsupervised learning  
 walk in the latent space
 
+### dataset
+mnist(28x28 image)  
+10 classes
 
+### component
+#### generator
+generator block(transposed convolution, batch norm, relu, tanh)
 
+#### discriminator 
+discriminator block(convolution, batch norm, leakyrelu)
 
+#### loss
+BCE(binary cross entropy)  
+generator loss  
+discriminator loss
 
-wgan
+#### optimizer
+adam
+
+## wgan
 
 unstable training
 use wgan with gradient penalty
