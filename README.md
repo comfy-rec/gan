@@ -1,12 +1,12 @@
 # gan(generative adversarial network)
 
-vanilla gan, dcgan, wgan, cgan, celeba cgan, unet, pix2pix, cyclegan
+gan, dcgan, wgan, cgan, celeba cgan, unet, pix2pix, cyclegan
 
 ## requirements
 
-google colab
-pytorch
-torchvision
+google colab  
+pytorch  
+torchvision  
 
 ## vanilla gan
 
