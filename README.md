@@ -219,15 +219,59 @@ D(x|y), G(z|y)
 celeba(64x64x3 images), 40 labels
 
 ## pix2pix
-### concept
 photorealistic, stylistic
-labels to street scene
-labels to facade
-black & white to color
-aerial to map
-day to night
+
+### concept
+#### example
+labels to street scene  
+labels to facade  
+black & white to color  
+aerial to map  
+day to night  
 edges to photo
 
+### structure
+#### generator(G)
+input(cgan generator - noise vector) -> pix2pix generator -> generated output  
+x -> G(x)
+
+#### discriminator(D)
+input(real input + (real output or generated output)) -> pix2pix discriminator -> real/fake  
+x, G(x) -> fake  
+x, y -> real
+
+### dataset
+VOCSegmentation
+
+### component
+generator
+u-net
+encoder-decoder
+deconv-net
+convolution, transposed convolution
+rgb image(input)(x) -> encoder -> latent vector -> decoder -> segmentation mask(output)(y)
+
+skip connection
+forward pass : encoder's information -> decoder
+backward pass : encoder's gradient flow improvement
+
+encoder block(convolution, batch norm, leakyrelu)
+x(256 x 256 x 3) -> E(x)(1 x 1 x 512)
+
+decoder block(transposed convolution, batch norm, relu)
+E(x)(1 x 1 x 512) -> y(256 x 256 x 3)
+dropout
+
+discriminator
+patchgan
+
+loss
+adversarial loss
+pixel distance loss
+
+paired image
+
+unpaired image-to-image translation
 
 ## unet
 
