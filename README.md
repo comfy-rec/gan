@@ -1,21 +1,16 @@
 # gan(generative adversarial network)
-
 gan, dcgan, wgan, cgan, celeba cgan, unet, pix2pix, cyclegan
 
 ## requirements
-
 google colab  
 pytorch  
 torchvision  
 
 ## vanilla gan
-
 ### fundamentals
-
 나의 행운은 적의 불행이요, 나의 불행은 적의 행운이다.
 
 #### background
-
 adversarial search  
 ex) mini-max search for tic-tac-toe  
 
@@ -30,19 +25,19 @@ AE(auto encoder) -> VAE(variational auto encoder)
 
 나는 강해진다, 나의 적이 강한 만큼
 
-generator  
+#### generator  
 G : p_z(z) -> p_g  
 trying to produce fake currency  
 
-discriminator  
+#### discriminator  
 D : D(x;θ_d) -> fake/real  
 x ~ p_g -> fake, x ~ data -> real  
 trying to detect the counterfeit currency  
 
-train  
+#### train  
 opposition, competition of generator, discriminator
 
-test  
+#### test  
 trained, saved parameter θ_g  
 saved generator G(θ_g)  
 input : latent vector z_k  
@@ -94,44 +89,60 @@ heuristic train strategy
 
 #### train process
 
-##### before training  
+##### before training
 
 G is not trained -> G(z) & x do not match  
 D is not trained -> D is unstable  
 
-##### D is trained  
+##### D is trained
 
 G is not trained -> G(z) & x do not match  
 D is trained -> D is stable  
 
-##### G is training  
+##### G is training
 
 G is training -> G(z) approaches x  
 D is trained -> D is stable  
 
-##### G & D are trained  
+##### G & D are trained
 
 G is trained -> G(z) & x match  
 D is trained -> D is uniform (1/2)  
 
+## dcgan(deep convolutional gan)
 
-dcgan
+### problem of vanilla gan
+
+generates images, but not visually pleasing results  
+
+### fundamentals
+
+convolution  
+transposed convolution
+
+### conept
+
+generate images of much improved quality  
+a strong candidate for unsupervised learning  
+walk in the latent space  
+
+
 wgan
+
+unstable training
+use wgan with gradient penalty
+
 cgan
+
+uncoltrollable result
+use cgan
+
 celeba cgan
 unet
 pix2pix
 cyclegan
 
-## requirements
 
-google colab
-
-pytorch
-
-torchvision
-
-## dataset
 
 celeba
 
