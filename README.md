@@ -6,7 +6,7 @@ google colab
 pytorch  
 torchvision
 
-## vanilla gan
+## vanilla gan(generative adversarial network)
 ### fundamentals
 my fortune is the enemy's misfortune, my misfortune is the enemy's fortune.  
 나의 행운은 적의 불행이요, 나의 불행은 적의 행운이다.
@@ -81,6 +81,8 @@ gradient descent application difficulty
 heuristic train strategy
 
 ### train process
+D train -> G train
+
 #### before training
 G is not trained -> G(z) & x do not match  
 D is not trained -> D is unstable
@@ -99,8 +101,7 @@ D is trained -> D is uniform (1/2)
 
 ## dcgan(deep convolutional gan)
 ### problem of vanilla gan
-generates images, but not visually pleasing results  
-use dcgan
+generates images, but not visually pleasing results -> use dcgan
 
 ### fundamentals
 convolution  
@@ -128,8 +129,7 @@ discriminator loss
 
 ## wgan(wasserstein gan)
 ### problem of vanilla gan
-unstable training  
-use wgan with gradient penalty
+unstable training -> use wgan with gradient penalty
 
 ### fundamentals
 entropy, information theory, cross entropy
@@ -185,8 +185,7 @@ critic loss
 control the results of gan by assigning conditions
 
 ### problem of vanilla gan
-uncontrollable result  
-use cgan
+uncontrollable result -> use cgan
 
 ### concept
 input : latent vector(z)(= noise vector) + condition vector(y)(= one-hot vector)  
@@ -300,29 +299,29 @@ contracting block(convolution, relu, maxpool)
 expanding block(upsample, convolution, relu)
 
 ## cyclegan
-unpaired image-to-image translation, unpaired image domain, style gan
-monet <-> photo
-zebra <-> horse
+unpaired image-to-image translation, unpaired image domain, style gan  
+monet <-> photo  
+zebra <-> horse  
 summer <-> winter
 
 ### background
-paired image domains -> ground truth o
+paired image domains -> ground truth o  
 unpaired image domains -> ground truth x
 
 ### concept
-2 domains : 2 gan : 2 cycle consistency
-2 gan
-gan_(Z->H), gan_(H->Z)
+2 domains : 2 gan : 2 cycle consistency  
+2 gan  
+gan_(Z->H), gan_(H->Z)  
 same structure, different training
 
 ### structure
-2 gan
+2 gan  
 gan_(Z->H), gan_(H->Z)
 
-gan_(Z->H) = generator : G_(Z->H), discriminator : (D_H)
+gan_(Z->H) = generator : G_(Z->H), discriminator : (D_H)  
 gan_(H->Z) = generator : G_(H->Z), discriminator : (D_Z)
 
-generator(G_(Z->H), G_(H->Z)) = same structure, different training
+generator(G_(Z->H), G_(H->Z)) = same structure, different training  
 discriminator((D_H), (D_Z)) = same structure, different training
 
 ### dataset
@@ -330,48 +329,48 @@ horse2zebra(3x256x256 image data)
 
 ### component
 #### generator
-unet + dcgan + skip-connection
-featuremap block(convolution)
-contractor block(convolution, relu, leakyrelu, instancenorm)
-residual block(convolution, instancenorm, relu)
-expander block(transposed convolution, instancenorm, relu)
+unet + dcgan + skip-connection  
+featuremap block(convolution)  
+contractor block(convolution, relu, leakyrelu, instancenorm)  
+residual block(convolution, instancenorm, relu)  
+expander block(transposed convolution, instancenorm, relu)  
 tanh
 
 #### discriminator
-patchgan(3x256x256 -> 1x8x8)
-featuremap block(convolution)
-contractor block(convolution, leakyrelu)
+patchgan(3x256x256 -> 1x8x8)  
+featuremap block(convolution)  
+contractor block(convolution, leakyrelu)  
 convolution
 
 #### loss
-total loss = adversarial loss + cycle consistency loss + identity loss
-total loss : L(G_(Z->H), G_(H->Z), D_H, D_Z)
-adversarial loss : L_gan(G_(Z->H), D_H, Z, H) + L_gan(G_(H->Z), D_Z, Z, H)
-cycle consistency loss : λ_1L_cyc(G_(H->Z), G_(Z->H))
+total loss = adversarial loss + cycle consistency loss + identity loss  
+total loss : L(G_(Z->H), G_(H->Z), D_H, D_Z)  
+adversarial loss : L_gan(G_(Z->H), D_H, Z, H) + L_gan(G_(H->Z), D_Z, Z, H)  
+cycle consistency loss : λ_1L_cyc(G_(H->Z), G_(Z->H))  
 identity loss : λ_2L_id(G_(H->Z), G_(Z->H))
 
 #### adversarial loss
-improve the quality
-discriminator loss
-generator loss
+improve the quality  
+discriminator loss  
+generator loss  
 MSELoss, L1Loss
 
-gan_(Z->H) loss
-generator : G_(Z->H), discriminator : (D_H)
+gan_(Z->H) loss  
+generator : G_(Z->H), discriminator : (D_H)  
 L_gan(G_(Z->H), D_H, Z, H)
 
-gan_(H->Z) loss
-generator : G_(H->Z), discriminator : (D_Z)
+gan_(H->Z) loss  
+generator : G_(H->Z), discriminator : (D_Z)  
 L_gan(G_(H->Z), D_Z, Z, H)
 
 #### cycle consistency loss
-avoide mode collapse
+avoide mode collapse  
 H->Z->H loss + Z->H->Z loss
 
 #### identity loss
-keep color
-pixel distance
-G_(Z->H), horse
+keep color  
+pixel distance  
+G_(Z->H), horse  
 G_(H->Z), zebra
 
 ## gaugan
