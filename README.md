@@ -325,11 +325,11 @@ generator(G_(Z->H), G_(H->Z)) = same structure, different training
 discriminator((D_H), (D_Z)) = same structure, different training
 
 ### dataset
-horse2zebra(3x256x256 image data)
+horse2zebra(3x256x256 images)
 
 ### component
 #### generator
-unet + dcgan + skip-connection  
+unet + dcgan + skip connection  
 featuremap block(convolution)  
 contractor block(convolution, relu, leakyrelu, instancenorm)  
 residual block(convolution, instancenorm, relu)  
