@@ -8,6 +8,7 @@ torchvision
 
 ## vanilla gan
 ### fundamentals
+my fortune is the enemy's misfortune, my misfortune is the enemy's fortune.  
 나의 행운은 적의 불행이요, 나의 불행은 적의 행운이다.
 
 #### background
@@ -22,6 +23,7 @@ latent vector -> complex model, realistic image
 AE(auto encoder) -> VAE(variational auto encoder)
 
 ### concept
+I become strong, as strong as my enemy is.  
 나는 강해진다, 나의 적이 강한 만큼
 
 #### generator
