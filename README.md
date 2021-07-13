@@ -1,5 +1,5 @@
 # gan(generative adversarial network)
-gan, dcgan, wgan, cgan, celeba_cgan, unet, pix2pix, cyclegan
+gan, dcgan, wgan, cgan, celeba_cgan, pix2pix, unet, cyclegan
 
 ## requirements
 google colab  
@@ -207,7 +207,7 @@ discriminator block(convolution, batch norm, leakyrelu)
 latent vector, one-hot vector concatenation
 
 #### loss
-min max V(D, G)  
+min max V(G, D)  
  G   D  
 D(x|y), G(z|y)
 
@@ -221,7 +221,7 @@ D(x|y), G(z|y)
 celeba(64x64x3 images), 40 labels
 
 ## pix2pix
-photorealistic, stylistic
+photorealistic, stylistic, paired image
 
 ### concept
 #### example
@@ -246,40 +246,68 @@ x, y -> real
 VOCSegmentation
 
 ### component
-generator
-u-net
-encoder-decoder
-deconv-net
-convolution, transposed convolution
+#### generator
+u-net  
+encoder-decoder  
+deconv-net  
+convolution, transposed convolution  
 rgb image(input)(x) -> encoder -> latent vector -> decoder -> segmentation mask(output)(y)
 
-skip connection
-forward pass : encoder's information -> decoder
+skip connection  
+forward pass : encoder's information -> decoder  
 backward pass : encoder's gradient flow improvement
 
-encoder block(convolution, batch norm, leakyrelu)
-x(256 x 256 x 3) -> E(x)(1 x 1 x 512)
+encoder block(convolution, batch norm, leakyrelu)  
+x(256x256x3) -> E(x)(1x1x512)
 
-decoder block(transposed convolution, batch norm, relu)
-E(x)(1 x 1 x 512) -> y(256 x 256 x 3)
+decoder block(transposed convolution, batch norm, relu)  
+E(x)(1x1x512) -> y(512x512x3)  
 dropout
 
-discriminator
+#### discriminator
 patchgan
 
-loss
-adversarial loss
-pixel distance loss
+#### loss
+pix2pix loss = cgan loss(adversarial loss, gan loss) + pixel distance loss  
+min max L_cgan(G, D) + λL_L1(G)  
+ G   D  
+L_cgan(G, D) : adversarial loss  
+λL_L1(G) : pixel distance loss  
+y : groundtruth
 
-paired image
+### realization
+#### generator -> unet
+feature map, contract, expand, sigmoid
+#### contractor
+contracting block(convolution, leakyrelu, maxpool, batch norm, dropout)
+#### crop
+#### expander
+expanding block(upsample, convolution, relu, batch norm, dropout)
+#### feature map
+feature map block(convolution)
 
-unpaired image-to-image translation
+#### discriminator
+feature map, contract
+
+#### loss
+BCEWithLogitsLoss, L1Loss
 
 ## unet
-
+### component
+#### contractor
+contracting block(convolution, relu, maxpool)
+#### crop
+#### expander
+expanding block(upsample, convolution, relu)
 
 ## cyclegan
+unpaired image-to-image translation, unpaired image domain, style gan
+monet <-> photo
+zebra <-> horse
+summer <-> winter
 
+### background
+ground truth x
 
 ## gaugan
 nvidia ai image creator
