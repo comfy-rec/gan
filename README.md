@@ -1,5 +1,5 @@
 # gan(generative adversarial network)
-gan, dcgan, wgan, cgan, celeba_cgan, pix2pix, unet, cyclegan
+gan, dcgan, wgan, cgan, celeba_cgan, pix2pix, unet, cyclegan, gaugan
 
 ## requirements
 google colab  
